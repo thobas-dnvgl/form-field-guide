@@ -58,3 +58,15 @@ required design considerations, described in the taxonomy.
 `src/model.js` contains the taxonomy, data fixtures, Mermaid source, and helpers.
 `src/main.jsx` contains the interactive React examples and page composition.
 `src/styles.css` contains Tailwind and the visual theme.
+
+## Visual theme
+
+The guide uses its own blue/navy/cyan theme inspired by the VUI Next design
+language, with square surfaces and controls (radios remain circular). Shared
+tokens in `src/styles.css` also style the Mermaid diagram and interaction states.
+It does not import VUI components or branding.
+
+Gantari Variable is self-hosted through `@fontsource-variable/gantari`, sourced
+from Google Fonts and licensed under the SIL Open Font License 1.1. The copyright
+notice and license in `public/gantari-OFL.txt` accompany the built font assets.
+Font assets are bundled locally; no external font request is needed.

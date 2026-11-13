@@ -15,6 +15,7 @@ import {
   Minus, Plus, Search, SlidersHorizontal, X,
 } from 'lucide-react';
 import { decisionTree, disciplines, exampleFamilies, families, fileActions, filterOptions, makeCustomValue, moveValue, people } from './model';
+import '@fontsource-variable/gantari';
 import './styles.css';
 
 const navigation = [
@@ -376,7 +377,9 @@ function DecisionTree() {
     async function render() {
       try {
         const { default: mermaid } = await import('mermaid');
-        mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: 'base', themeVariables: { fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineColor: '#98a69c', edgeLabelBackground: '#fbfcfa' }, flowchart: { curve: 'basis', htmlLabels: false, nodeSpacing: 28, rankSpacing: 45, padding: 18 } });
+        await document.fonts.ready;
+        const theme = getComputedStyle(document.documentElement);
+        mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: 'base', themeVariables: { fontFamily: theme.getPropertyValue('--font-sans').trim(), fontSize: '14px', lineColor: theme.getPropertyValue('--color-muted').trim(), edgeLabelBackground: theme.getPropertyValue('--color-surface').trim() }, flowchart: { curve: 'basis', htmlLabels: false, nodeSpacing: 28, rankSpacing: 45, padding: 18 } });
         const { svg } = await mermaid.render(`decision-${renderId}`, decisionTree);
         if (active && container.current) {
           container.current.innerHTML = svg;
@@ -431,7 +434,7 @@ const modifiers = [
 function Taxonomy({ onNavigate }) {
   return <>
     <div className="section-heading"><div><h2>A shared language for the team.</h2><p>Working definitions, independent of any library's component names.</p></div><Badge>{families.length} families & compositions</Badge></div>
-    <div className="overflow-x-auto rounded-xl border border-stone-200 bg-white">
+    <div className="taxonomy-panel overflow-x-auto">
       <table className="taxonomy-table"><caption className="sr-only">Component families, cardinality, search, and intended use</caption><thead><tr><th>Family</th><th>Values</th><th>Search</th><th>Reach for it when...</th></tr></thead>
         <tbody>{families.map(family => <tr key={family.id}><th scope="row">{exampleFamilies.some(example => example.id === family.id) ? <button onClick={() => onNavigate('examples', family.id)} className="flex items-center gap-2 text-left hover:text-emerald-700">{family.name}<ArrowUpRight size={13} /></button> : family.name}{family.custom && <span className="mt-1 block text-xs font-normal text-orange-700">Custom values allowed</span>}</th><td>{family.count === 'both' ? 'One or many' : family.count === 'single' ? 'One' : 'Many'}</td><td>{family.search}</td><td>{family.use}</td></tr>)}</tbody>
       </table>

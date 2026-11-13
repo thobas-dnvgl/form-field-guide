@@ -115,10 +115,10 @@ export const decisionTree = `flowchart TD
   FIND -->|Browse; filter if helpful| SELECTCOUNT{"One or multiple values?"}
   SELECTCOUNT -->|One| SELECT["Select\\nValue on button\\nOptional search in popover"]
   SELECTCOUNT -->|Multiple| MULTISELECT["Multi-select\\nSummary on button\\nOptional search in popover"]
-  classDef decision fill:#fff,stroke:#bdc9c2,color:#293d35,rx:10;
-  classDef family fill:#e7f2eb,stroke:#79a98b,color:#174d35,rx:8;
-  classDef action fill:#fbf2e8,stroke:#bd986a,color:#71512c,rx:8;
-  classDef excluded fill:#f3f1ed,stroke:#ccc5ba,color:#766e63,rx:8;
+  classDef decision rx:0,ry:0;
+  classDef family rx:0,ry:0;
+  classDef action rx:0,ry:0;
+  classDef excluded rx:0,ry:0;
   class START,ENTRY,FREECOUNT,ALLOWCREATE,CREATECOUNT,VISIBLE,INLINECOUNT,FIND,COMBOCOUNT,SELECTCOUNT decision;
   class TAGS,CREATEONE,CREATEMULTI,RADIO,CHECK,COMBO,MULTICOMBO,SELECT,MULTISELECT family;
   class ACTION action;
