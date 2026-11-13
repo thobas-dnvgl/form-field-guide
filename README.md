@@ -43,6 +43,11 @@ under the repository subpath.
   focus the tag, press Space or Enter, use the arrow keys, then press Space or
   Enter to drop. Escape cancels. Removal remains a separate button.
 - Concise React examples and implementation references.
+- Configuration guidance covers group headings and dividers, keyboard decisions
+  for comboboxes with pills (including Backspace/Delete and Ctrl+A/Cmd+A), and
+  choice cards: radio cards for one value or checkbox cards for multiple values.
+  Choice cards are presentation variants, not an additional select family;
+  the demos do not implement a complete pill-keyboard model.
 
 Headless UI supplies accessible menu, listbox, and combobox primitives.
 Radio and checkbox groups use native inputs. The local pills/token input is

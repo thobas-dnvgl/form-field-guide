@@ -19,11 +19,13 @@ export const families = [
     'Delivery options: compare standard, express, or pickup.',
     'Billing cycle: choose monthly or yearly payments.',
     'Profile visibility: choose public or private.',
+    'Plan selection: compare service plans using radio cards (choice cards).',
   ], search: 'None', custom: false, visibility: 'Always visible', primitive: 'Native radio inputs', docs: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio' },
   { id: 'checkbox', name: 'Checkbox group', count: 'multiple', number: '02', summary: 'Independent choices, visible together.', use: 'A manageable set of non-exclusive choices.', useCases: [
     'Notification channels: enable email, SMS, and push independently.',
     'Newsletter topics: select several interests from a short list.',
     'Order extras: add gift wrapping and a gift message.',
+    'Cloud providers: select several providers using checkbox cards (choice cards).',
   ], search: 'None', custom: false, visibility: 'Always visible', primitive: 'Native checkbox inputs', docs: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox' },
   { id: 'select', name: 'Select', count: 'single', number: '03', summary: 'One value, tucked behind a trigger.', use: 'People browse a known set; the button shows the selected value. Search can help with a long list.', useCases: [
     'Country selector: browse a country list, with optional search in the popover.',

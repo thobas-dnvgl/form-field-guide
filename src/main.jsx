@@ -340,7 +340,10 @@ function Explorer() {
       ? <ActionMenuCard key={family.id} family={family} hidden={!matches.some(match => match.id === family.id)} />
       : <DemoCard key={family.id} family={family} hidden={!matches.some(match => match.id === family.id)} />)}</div>
     {!matches.length && <div className="empty-state"><Search size={24} /><h3>No matching patterns</h3><p>Try a different search or filter.</p><button className="button-secondary" onClick={() => { setFilter('all'); setQuery(''); }}>Reset filters</button></div>}
-    <div className="note scope-note mt-6"><SlidersHorizontal size={20} /><p><strong>This guide helps you choose a component, but it doesn't cover every setup detail.</strong> You still need to decide how options are grouped and whether they're all available right away or load asynchronously; how many choices are allowed; whether users can reorder them; and how validation, disabled options, and applying changes should work.</p></div>
+    <div className="note scope-note mt-6"><SlidersHorizontal size={20} /><div>
+      <p><strong>This guide helps you choose a component, but it doesn't cover every setup detail.</strong> You still need to decide how options are grouped, including group headings and dividers; whether they're all available right away or load asynchronously; how many choices are allowed; whether users can reorder them; and how validation, disabled options, and applying changes should work.</p>
+      <p className="mt-3"><strong>Define keyboard behavior, especially for comboboxes with pills.</strong> Specify when Backspace or Delete removes a pill, how Left/Right moves between pills and the input, whether Ctrl+A (Cmd+A on macOS) selects the query text or the pills, and how Escape and focus should work. These interactions need an explicit design; the demos do not implement a complete pill-keyboard model.</p>
+    </div></div>
   </>;
 }
 
@@ -421,9 +424,10 @@ function DecisionTree() {
 
 const modifiers = [
   ['Value presentation', 'Label, pills, count, summary, or a separate list. Plan wrapping and overflow.'],
+  ['Option presentation', 'Choice cards (also called selection cards, or SelectBoxGroup in some libraries) keep rich choices visible. Use radio cards for one value or checkbox cards for multiple values, such as cloud providers. Cards are a presentation of those groups, not a separate select family; retain their keyboard semantics and distinguish focus from selection.'],
   ['Search and suggestions', 'None, text completions in a text field, options in the value-field combobox, or a separate search field in a popover. These behaviors do not determine the family.'],
   ['Option source', 'Local or remote; complete or incremental. Loading strategy is not a family.'],
-  ['Option richness', 'Labels, descriptions, avatars, groups, or a hierarchical selection model.'],
+  ['Option richness', 'Labels, descriptions, avatars, group headings and dividers, or a hierarchical selection model.'],
   ['Custom commitment', 'Enter, delimiters, paste, or explicit Create. Define validation and duplicates.'],
   ['Creation meaning', 'A form-local object versus a persisted, reusable entity.'],
   ['Selection rules', 'Required, clearable, minimum / maximum counts, and select all.'],
